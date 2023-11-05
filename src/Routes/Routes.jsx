@@ -4,13 +4,14 @@ import MainLayout from "../Layout/MainLayout";
 import Login from "../components/pages/Login/Login";
 import Signup from "../components/pages/Signup/Signup";
 import AddFood from "../components/pages/AddFood/AddFood";
-import ErrorPage from "../components/Shared/ErrorPage/ErrorPage";
+import PrivateRoutes from "./PrivateRoutes";
+//import ErrorPage from "../components/Shared/ErrorPage/ErrorPage";
 
 const router = createBrowserRouter([
     {
         path: "/",
         Element: <MainLayout></MainLayout>,
-        errorElement: <ErrorPage></ErrorPage>,
+        //errorElement: <ErrorPage></ErrorPage>,
         children: [
             {
                 path: '/',
@@ -18,7 +19,7 @@ const router = createBrowserRouter([
             },
             {
                 path: '/add',
-                element: <AddFood></AddFood>
+                element: <PrivateRoutes><AddFood></AddFood></PrivateRoutes>
             },
             {
                 path:'/login',

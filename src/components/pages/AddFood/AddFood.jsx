@@ -6,24 +6,24 @@ const AddFood = () => {
         const form = e.target;
         const foodName = form.name.value;
         const status = form.status.value;
+        const name = form.name.value;
+        const D_email = form.D_email.value;
+        const DImage_url = form.DImage_url.value;
         const location = form.location.value;
         const quantity = form.quantity.value;
         const date = form.date.value;
         const notes = form.notes.value;
-        const name = form.name.value;
-        const D_email = form.D_email.value;
         const image_url = form.image_url.value;
-        const DImage_url = form.DImage_url.value;
 
-        const productInfo = { foodName, status, location, quantity, date, notes, image_url, name, D_email, DImage_url }
+        const foodInfo = { foodName, status, location, quantity, date, notes, image_url, name, D_email, DImage_url }
 
         //send form data to server
-        fetch('', {
+        fetch('http://localhost:5000/food', {
             method: 'POST',
             headers: {
                 "content-type": "application/json"
             },
-            body: JSON.stringify(productInfo)
+            body: JSON.stringify(foodInfo)
         })
             .then(res => res.json())
             .then(data => {
@@ -74,7 +74,7 @@ const AddFood = () => {
                                 <label className="label">
                                     <span className="label-text">Donator Image</span>
                                 </label>
-                                <input type="text" name="DImage_Url" placeholder="Donar Image Url" className="rounded-full border-2 border-orange-500 input input-bordered w-full" required />
+                                <input type="text" name="DImage_url" placeholder="Donar Image Url" className="rounded-full border-2 border-orange-500 input input-bordered w-full" required />
                             </div>
                         </div>
                         <div className="md:w-1/2">
@@ -82,7 +82,7 @@ const AddFood = () => {
                                 <label className="label">
                                     <span className="label-text">Location</span>
                                 </label>
-                                <input type="text" name="location " className="rounded-full border-2 border-orange-500 input input-bordered w-full" placeholder="Pickup Location" id="" />
+                                <input type="text" name="location" className="rounded-full border-2 border-orange-500 input input-bordered w-full" placeholder="Pickup Location" id="" />
                             </div>
                             <div className="form-control w-full">
                                 <label className="label">

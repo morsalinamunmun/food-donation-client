@@ -3,6 +3,7 @@ import Home from "../components/pages/Home/Home";
 import MainLayout from "../Layout/MainLayout";
 import Login from "../components/pages/Login/Login";
 import Signup from "../components/pages/Signup/Signup";
+import AddFood from "../components/pages/AddFood/AddFood";
 
 const router = createBrowserRouter([
     {
@@ -14,6 +15,10 @@ const router = createBrowserRouter([
                 element: <Home></Home>
             },
             {
+                path: '/add',
+                element: <AddFood></AddFood>
+            },
+            {
                 path:'/login',
                 element: <Login></Login>
             },
@@ -23,6 +28,6 @@ const router = createBrowserRouter([
             }
         ]
     },
-])
+]);
 
 export default router;

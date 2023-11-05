@@ -6,6 +6,7 @@ import Navbar from "../../Shared/Navbar/Navbar";
 
 import { Toaster, toast } from "react-hot-toast";
 import { AuthContext } from "../../../Provider/AuthProvider";
+import Footer from "../../Shared/Footer/Footer";
 
 const Signup = () => {
   const [error, setError] = useState('');
@@ -43,8 +44,9 @@ const Signup = () => {
     .catch(error=> console.error(error));
   }
   return (
+    <>
+    <Navbar></Navbar>
       <div className="bg-gradient-to-r from-[#FDBA74] to-[#F97316] pb-5">
-            <Navbar></Navbar>
             <div className="card flex-shrink-0 w-full max-w-sm my-10 shadow-2xl flex mx-auto bg-orange-300">
                 <h2 className="p-5 text-2xl font-bold">Sign Up Now</h2>
               <form className="card-body" onSubmit={handleSignUp}>
@@ -86,6 +88,8 @@ const Signup = () => {
             </div>
             <Toaster></Toaster>
       </div>
+      <Footer></Footer>
+      </>
     );
 };
 

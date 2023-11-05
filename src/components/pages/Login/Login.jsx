@@ -6,6 +6,7 @@ import { useContext, useState } from "react";
 import { Toaster, toast } from "react-hot-toast";
 import Navbar from "../../Shared/Navbar/Navbar";
 import { AuthContext } from "../../../Provider/AuthProvider";
+import Footer from "../../Shared/Footer/Footer";
 
 const Login = () => {
     const [loginError, setLoginError] = useState('');
@@ -79,6 +80,7 @@ const Login = () => {
             </div>
             <Toaster></Toaster>
         </div>
+        <Footer></Footer>
         </>
     );
 };

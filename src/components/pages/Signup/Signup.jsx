@@ -39,7 +39,7 @@ const Signup = () => {
       console.log(result.user);
       updateProfileData(name, image_url)
       .then(res=> {console.log(res.user)})
-       navigate(location?.state? location.state: '/signin')
+       navigate(location?.state? location.state: '/')
     })
     .catch(error=> console.error(error));
   }

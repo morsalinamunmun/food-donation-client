@@ -1,12 +1,47 @@
 import { useContext } from "react";
 import { AuthContext } from "../../Provider/AuthProvider";
+import Swal from "sweetalert2";
 
 const ViewDetail = ({ viewDetail }) => {
     const {user} = useContext(AuthContext);
 
     const { _id, image_url, foodName, date, notes, name, location, quantity, D_email } = viewDetail;
-    const handleRequest = () => {
+    const handleRequest = e => {
+        e.preventDefault();
+        const form = e.target;
+        const foodName = form.foodName.value;
+        const id = form.id.value;
+        const name = form.name.value;
+        const D_email = form.D_email.value;
+        const location = form.location.value;
+        const request_date = form.request_date.value;
+        const date = form.date.value;
+        const notes = form.notes.value;
+        const money = form.money.value;
+        const image_url = form.image_url.value;
 
+        const requestInfo = { foodName, id, location, quantity, request_date, date, notes, image_url, name, money, D_email}
+
+        //send form data to server
+        fetch('http://localhost:5000/requestFood', {
+            method: 'POST',
+            headers: {
+                "content-type": "application/json"
+            },
+            body: JSON.stringify(requestInfo)
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data)
+                if (data.insertedId) {
+                    Swal.fire({
+                        title: 'Success',
+                        text: 'Request successfully',
+                        icon: 'success',
+                        confirmButtonText: 'ok'
+                    })
+                }
+            })
     }
     return (
         <div className="flex max-w-4xl mx-auto mt-10">
@@ -96,7 +131,7 @@ const ViewDetail = ({ viewDetail }) => {
                                     <label className="label">
                                         <span className="label-text">Donation Money</span>
                                     </label>
-                                    <input type="text" name="money" placeholder="Donation  money" className="rounded-full border-2 border-orange-500 input input-bordered w-full" />
+                                    <input type="number" name="money" placeholder="Donation  money" className="rounded-full border-2 border-orange-500 input input-bordered w-full" />
                                 </div>
                                 <input type="submit" value="Request Send" className=" mt-10 btn btn-block bg-orange-500 text-white" />
                             </form>

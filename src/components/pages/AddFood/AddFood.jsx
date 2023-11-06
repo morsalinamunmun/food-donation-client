@@ -18,7 +18,7 @@ const AddFood = () => {
         const foodInfo = { foodName, status, location, quantity, date, notes, image_url, name, D_email, DImage_url }
 
         //send form data to server
-        fetch('http://localhost:5000/food', {
+        fetch('http://localhost:5000/food ', {
             method: 'POST',
             headers: {
                 "content-type": "application/json"
@@ -31,7 +31,7 @@ const AddFood = () => {
                 if (data.insertedId) {
                     Swal.fire({
                         title: 'Success',
-                        text: 'Product add successfully',
+                        text: 'Food add successfully',
                         icon: 'success',
                         confirmButtonText: 'ok'
                     })

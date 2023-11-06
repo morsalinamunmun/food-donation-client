@@ -92,7 +92,7 @@ const AddFood = () => {
                             </div>
                             <div className="form-control w-full">
                                 <label className="label">
-                                    <span className="label-text">Date</span>
+                                    <span className="label-text">Pickup Date</span>
                                 </label>
                                 <input type="date" name="date" placeholder="Price" className="rounded-full border-2 border-orange-500 input input-bordered w-full" required />
                             </div>

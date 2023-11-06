@@ -4,7 +4,7 @@ const AddFood = () => {
     const handleAddFood = e => {
         e.preventDefault();
         const form = e.target;
-        const foodName = form.name.value;
+        const foodName = form.foodName.value;
         const status = form.status.value;
         const name = form.name.value;
         const D_email = form.D_email.value;

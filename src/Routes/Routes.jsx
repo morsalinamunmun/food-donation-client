@@ -5,6 +5,7 @@ import Login from "../components/pages/Login/Login";
 import Signup from "../components/pages/Signup/Signup";
 import AddFood from "../components/pages/AddFood/AddFood";
 import PrivateRoutes from "./PrivateRoutes";
+import AvailableFoods from "../components/pages/AvailableFoods/AvailableFoods";
 //import ErrorPage from "../components/Shared/ErrorPage/ErrorPage";
 
 const router = createBrowserRouter([
@@ -20,6 +21,11 @@ const router = createBrowserRouter([
             {
                 path: '/add',
                 element: <PrivateRoutes><AddFood></AddFood></PrivateRoutes>
+            },
+            {
+                path: '/available',
+                element: <AvailableFoods></AvailableFoods>,
+                //loader: ()=>fetch('http://localhost:5000/food')
             },
             {
                 path:'/login',

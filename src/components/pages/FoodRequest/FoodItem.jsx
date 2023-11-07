@@ -2,6 +2,7 @@ import Swal from "sweetalert2";
 
 const FoodItem = ({ foodItem, setFoodItems, foodItems }) => {
     const { _id, date, location, name, image_url, request_date, money } = foodItem;
+    console.log(foodItems)
 
     const handleCancel = (_id) =>{
         Swal.fire({
@@ -26,7 +27,7 @@ const FoodItem = ({ foodItem, setFoodItems, foodItems }) => {
                         'Request has been Cancel.',
                         'success'
                     )   
-                    const remaining = foodItems.filter(deleteCart=> deleteCart.id !== _id)
+                    const remaining = foodItems.filter(cancelRequest=> cancelRequest.id !== _id)
                     setFoodItems(remaining); 
                 }
               })

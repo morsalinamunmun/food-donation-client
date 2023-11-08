@@ -1,6 +1,6 @@
-import { Card, Typography } from "@material-tailwind/react";
+import { Card, Navbar, Typography } from "@material-tailwind/react";
 import { useState } from "react";
-import { useLoaderData } from "react-router-dom";
+import { Link, useLoaderData } from "react-router-dom";
 import Swal from "sweetalert2";
  
 const TABLE_HEAD = ["Food Name", "Date", "Status", ""];
@@ -68,6 +68,8 @@ const FoodTable =() => {
       })
 }
   return (
+    <div className="max-w-6xl mx-auto">
+    <Navbar></Navbar>
     <Card className="h-full w-full overflow-scroll">
       <table className="w-full min-w-max table-auto text-left">
         <thead>
@@ -130,7 +132,7 @@ const FoodTable =() => {
                     color="blue-gray"
                     className="font-medium"
                   >
-                    Edit
+                    <Link to={`/updateFood/${_id}`}>Update</Link>
                   </Typography>
                 </td>
                 <td className={classes}>
@@ -161,6 +163,7 @@ const FoodTable =() => {
         </tbody>
       </table>
     </Card>
+    </div>
   );
 }
 

@@ -1,12 +1,52 @@
+import Swal from "sweetalert2";
 import Navbar from "../Shared/Navbar/Navbar";
 
 const UpdateFood = () => {
+    
+    const handleUpdateFood = e =>{
+        e.preventDefault();
+        const form = e.target;
+        const foodName = form.foodName.value;
+        const status = form.status.value;
+        const name = form.name.value;
+        const D_email = form.D_email.value;
+        const DImage_url = form.DImage_url.value;
+        const location = form.location.value;
+        const quantity = form.quantity.value;
+        const date = form.date.value;
+        const notes = form.notes.value;
+        const image_url = form.image_url.value;
+
+        const foodInfo = { foodName, status, location, quantity, date, notes, image_url, name, D_email, DImage_url }
+
+        
+        //send form data to server
+        fetch(`http://localhost:5000/food//${_id}`, {
+            method: 'PUT',
+            headers: {
+                "content-type": "application/json"
+            },
+            body: JSON.stringify(foodInfo)
+        })
+        .then(res=> res.json())
+        .then(data=>{
+            console.log(data)
+            if(data.insertedId){
+                Swal.fire({
+                    title: 'Success',
+                    text: 'Product Update successfully',
+                    icon: 'success',
+                    confirmButtonText: 'ok'
+                  })
+            }
+        }) 
+    }
     return (
         <div>
              <Navbar></Navbar>
             <div className="bg-orange-300 p-10 max-w-6xl mx-auto">
                 <h2 className="text-3xl font-extrabold">Add Food</h2>
-                <form >
+                <form onSubmit={handleUpdateFood}>
                     <div className="md:flex gap-5">
                         <div className="md:w-1/2">
                             <div className="form-control w-full">

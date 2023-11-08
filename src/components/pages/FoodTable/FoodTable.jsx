@@ -1,65 +1,166 @@
-// src/components/ManageFood.js
-import  { useState, useEffect } from 'react';
-import axios from 'axios';
-import ReactTable from 'react-table';
-//import 'react-table-6/react-table.css';
+import { Card, Typography } from "@material-tailwind/react";
+import { useState } from "react";
+import { useLoaderData } from "react-router-dom";
+import Swal from "sweetalert2";
+ 
+const TABLE_HEAD = ["Food Name", "Date", "Status", ""];
+ 
+/* const TABLE_ROWS = [
+  {
+    name: "John Michael",
+    job: "Manager",
+    date: "23/04/18",
+  },
+  {
+    name: "Alexa Liras",
+    job: "Developer",
+    date: "23/04/18",
+  },
+  {
+    name: "Laurent Perrier",
+    job: "Executive",
+    date: "19/09/17",
+  },
+  {
+    name: "Michael Levi",
+    job: "Developer",
+    date: "24/12/08",
+  },
+  {
+    name: "Richard Gran",
+    job: "Manager",
+    date: "04/10/21",
+  },
+]; */
+ 
+const FoodTable =() => {
+  const foods = useLoaderData();
+  const [foodItems, setFoodItems] = useState([]);
 
-const FoodTable =() =>{
-  const [data, setData] = useState([]);
-
-  useEffect(() => {
-    // Fetch data from the server.
-    axios.get('http://localhost:5000/food')
-      .then((response) => {
-        setData(response.data);
+  const handleDelete = (_id) =>{
+    Swal.fire({
+        title: 'Are you sure?',
+        text: "You won't be able to revert this!",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Yes, cancel it!'
+      }).then((result) => {
+        if (result.isConfirmed) {
+          fetch(`http://localhost:5000/food/${_id}`, {
+            method: "DELETE"
+          })
+          .then(res=> res.json())
+          .then(data=>{
+            console.log(data)
+            if(data.deletedCount > 0){
+                Swal.fire(
+                    'Deleted!',
+                    'Request has been Cancel.',
+                    'success'
+                )   
+                const remaining = foodItems.filter(cancelRequest=> cancelRequest.id !== _id)
+                setFoodItems(remaining); 
+            }
+          })
+        }
       })
-      .catch((error) => {
-        console.error('Error fetching data:', error);
-      });
-  }, []);
-
-  const columns = [
-    {
-      Header: 'Food Name',
-      accessor: 'foodName',
-    },
-    {
-      Header: 'Location',
-      accessor: 'location',
-    },
-    {
-      Header: 'Quantity',
-      accessor: 'quantity',
-    },
-    {
-      Header: 'Date',
-      accessor: 'date',
-    },
-    {
-      Header: 'Actions',
-      accessor: '_id',
-      Cell: (props) => (
-        <div>
-          <button onClick={() => handleEdit(props.value)}>Edit</button>
-          <button onClick={() => handleDelete(props.value)}>Delete</button>
-        </div>
-      ),
-    },
-  ];
-
-  const handleEdit = (foodId) => {
-    // Implement your edit logic here.
-  };
-
-  const handleDelete = (foodId) => {
-    // Implement your delete logic here.
-  };
-
+}
   return (
-    <div>
-      <h1>Manage Food</h1>
-      <ReactTable data={data} columns={columns} />
-    </div>
+    <Card className="h-full w-full overflow-scroll">
+      <table className="w-full min-w-max table-auto text-left">
+        <thead>
+          <tr>
+            {TABLE_HEAD.map((head) => (
+              <th
+                key={head}
+                className="border-b border-blue-gray-100 bg-blue-gray-50 p-4"
+              >
+                <Typography
+                  variant="small"
+                  color="blue-gray"
+                  className="font-normal leading-none opacity-70"
+                >
+                  {head}
+                </Typography>
+              </th>
+            ))}
+          </tr>
+        </thead>
+        <tbody>
+          {foods.map(({ foodName,  date, _id }, index) => {
+            const isLast = index === foods.length - 1;
+            const classes = isLast ? "p-4" : "p-4 border-b border-blue-gray-50";
+ 
+            return (
+              <tr key={name}>
+                <td className={classes}>
+                  <Typography
+                    variant="small"
+                    color="blue-gray"
+                    className="font-normal"
+                  >
+                    {foodName}
+                  </Typography>
+                </td>
+                <td className={classes}>
+                  <Typography
+                    variant="small"
+                    color="blue-gray"
+                    className="font-normal"
+                  >
+                    {date}
+                  </Typography>
+                </td>
+                <td className={classes}>
+                  <Typography
+                    variant="small"
+                    color="blue-gray"
+                    className="font-normal"
+                  >
+                    {date}
+                  </Typography>
+                </td>
+                <td className={classes}>
+                  <Typography
+                    as="a"
+                    href="#"
+                    variant="small"
+                    color="blue-gray"
+                    className="font-medium"
+                  >
+                    Edit
+                  </Typography>
+                </td>
+                <td className={classes}>
+                  <Typography
+                    as="a"
+                    href="#"
+                    variant="small"
+                    color="blue-gray"
+                    className="font-medium"
+                  >
+                    <button onClick={()=>handleDelete(_id)}>Delete</button>
+                  </Typography>
+                </td>
+                <td className={classes}>
+                  <Typography
+                    as="a"
+                    href="#"
+                    variant="small"
+                    color="blue-gray"
+                    className="font-medium"
+                  >
+                    Manage
+                  </Typography>
+                </td>
+              </tr>
+            );
+          })}
+        </tbody>
+      </table>
+    </Card>
   );
 }
 

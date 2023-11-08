@@ -12,19 +12,17 @@ const FoodRequest = () => {
     console.log(foodItems)
     const url = `http://localhost:5000/requestFood?email=${user?.email}`;
    useEffect(()=>{
-    fetch(url)
+    fetch(url, {credentials: 'include'})
     .then(res => res.json())
     .then(data=> setFoodItems(data))
    }, [])
     return (
         <>
         <Navbar></Navbar>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 my-20">
-            {foodItems?
-                foodItems.map(foodItem=> <FoodItem key={foodItem._id} foodItem={foodItem} foodItems={foodItems} setFoodItems={setFoodItems}></FoodItem> ):
-                <div>
-                    <h2 className="text-2xl text-orange-500 text-center mt-20">No Request Food</h2>
-                </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 my-20 max-w-6xl mx-auto">
+            {
+                foodItems.map(foodItem=> <FoodItem key={foodItem._id} foodItem={foodItem} foodItems={foodItems} setFoodItems={setFoodItems}></FoodItem> )
+               
             }
         </div>
         </>

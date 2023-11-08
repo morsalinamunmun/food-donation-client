@@ -26,7 +26,7 @@ const AvailableFoods = () => {
             })
     }, [])
     return (
-        <div>
+        <div className="max-w-7xl mx-auto">
             <Navbar></Navbar>
             <div className="hero h-52 " style={{ backgroundImage: 'url(https://i.ibb.co/D5kZ40y/close-up-people-holding-apples-bag.jpg)' }}>
                 <div className="hero-overlay bg-opacity-60"></div>

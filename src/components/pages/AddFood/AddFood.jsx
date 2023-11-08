@@ -41,7 +41,7 @@ const AddFood = () => {
     return (
         <>
             <Navbar></Navbar>
-            <div className="bg-orange-300 p-10">
+            <div className="bg-orange-300 p-10 max-w-6xl mx-auto">
                 <h2 className="text-3xl font-extrabold">Add Food</h2>
                 <form onSubmit={handleAddFood}>
                     <div className="md:flex gap-5">

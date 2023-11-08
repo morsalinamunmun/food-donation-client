@@ -9,13 +9,13 @@ import AvailableFoods from "../components/pages/AvailableFoods/AvailableFoods";
 import ViewDetails from "../components/ViewDetails/ViewDetails";
 import FoodRequest from "../components/pages/FoodRequest/FoodRequest";
 import FoodTable from "../components/pages/FoodTable/FoodTable";
-//import ErrorPage from "../components/Shared/ErrorPage/ErrorPage";
+import ErrorPage from "../components/Shared/ErrorPage/ErrorPage";
 
 const router = createBrowserRouter([
     {
         path: "/",
         Element: <MainLayout></MainLayout>,
-        //errorElement: <ErrorPage></ErrorPage>,
+        errorElement: <ErrorPage></ErrorPage>,
         children: [
             {
                 path: '/',
@@ -37,7 +37,7 @@ const router = createBrowserRouter([
             },
             {
                 path: '/manage',
-                element: <FoodTable></FoodTable>,
+                element: <PrivateRoutes><FoodTable></FoodTable></PrivateRoutes>,
                 loader: ()=>fetch('http://localhost:5000/food')
             },
             {

@@ -10,7 +10,9 @@ const Navbar = () => {
               <li><NavLink to='/available' className={({isActive, isPending})=> isPending ? "pending" : isActive ? "text-orange-500 border-r-2 border-orange-500 pr-2" : ""}>Available Foods</NavLink></li>
               <li><NavLink to='/add' className={({isActive, isPending})=> isPending ? "pending" : isActive ? "text-orange-500 border-r-2 border-orange-500 pr-2" : ""}>Add Food</NavLink></li>
               <li><NavLink to='/manage' className={({isActive, isPending})=> isPending ? "pending" : isActive ? "text-orange-500 border-r-2 border-orange-500 pr-2" : ""}>Manage My Foods</NavLink></li>
+
               <li><NavLink to='/request' className={({isActive, isPending})=> isPending ? "pending" : isActive ? "text-orange-500 border-r-2 border-orange-500 pr-2" : ""}>My Food Request</NavLink></li>
+
               {/* <li><NavLink to='/login' className='border-orange-500 rounded-lg'>Log In</NavLink></li> */}
     </>
 

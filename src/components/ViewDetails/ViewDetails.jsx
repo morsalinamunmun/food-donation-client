@@ -13,7 +13,7 @@ const ViewDetails = () => {
         <div>
             <Navbar></Navbar>
             {
-                food.map(viewDetail=> <ViewDetail key={viewDetail.id} viewDetail={viewDetail}></ViewDetail>)
+                food.map(viewDetail=> <ViewDetail key={viewDetail._id} viewDetail={viewDetail}></ViewDetail>)
             }
         </div>
     );

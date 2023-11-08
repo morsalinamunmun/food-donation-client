@@ -1,4 +1,4 @@
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 
 import { FcGoogle } from 'react-icons/fc';
 import { useContext, useState } from "react";
@@ -12,6 +12,7 @@ const Login = () => {
     const [loginError, setLoginError] = useState('');
     const navigate = useNavigate();
     const { signIn, googleSignIn } = useContext(AuthContext);
+    const location = useLocation();
     const handleLogin = e => {
         e.preventDefault();
         const form = new FormData(e.currentTarget);

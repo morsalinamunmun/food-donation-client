@@ -18,9 +18,10 @@ const ViewDetail = ({ viewDetail }) => {
         const date = form.date.value;
         const notes = form.notes.value;
         const money = form.money.value;
+        const email = user?.email;
         const image_url = form.image_url.value;
 
-        const requestInfo = { foodName, id, location, quantity, request_date, date, notes, image_url, name, money, D_email}
+        const requestInfo = { foodName, id, location, quantity, request_date, date, notes, image_url, name, money, D_email, email}
 
         //send form data to server
         fetch('http://localhost:5000/requestFood', {
@@ -91,7 +92,7 @@ const ViewDetail = ({ viewDetail }) => {
                                             <label className="label">
                                                 <span className="label-text">User Email</span>
                                             </label>
-                                            <input type="text" name="user_email" defaultValue={user?.email} placeholder="User Email" className="rounded-full border-2 border-orange-500 input input-bordered w-full" required readOnly />
+                                            <input type="text" name="email" defaultValue={user?.email} placeholder="User Email" className="rounded-full border-2 border-orange-500 input input-bordered w-full" required readOnly />
                                         </div>
                                     </div>
                                     <div className="md:w-1/2">

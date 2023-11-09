@@ -1,3 +1,4 @@
+import Footer from "../../Shared/Footer/Footer";
 import Navbar from "../../Shared/Navbar/Navbar";
 import Swal from 'sweetalert2'
 const AddFood = () => {
@@ -41,7 +42,7 @@ const AddFood = () => {
     return (
         <>
             <Navbar></Navbar>
-            <div className="bg-orange-300 p-10 max-w-6xl mx-auto">
+            <div className="bg-orange-300 p-10 max-w-6xl mx-auto my-10">
                 <h2 className="text-3xl font-extrabold">Add Food</h2>
                 <form onSubmit={handleAddFood}>
                     <div className="md:flex gap-5">
@@ -113,6 +114,7 @@ const AddFood = () => {
                     <input type="submit" value="Add Food" className=" mt-10 btn btn-block bg-orange-500 text-white" />
                 </form>
             </div>
+            <Footer></Footer>
         </>
     );
 };

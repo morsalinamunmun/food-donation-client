@@ -3,6 +3,7 @@ import Food from "../../Food/Food";
 import Navbar from "../../Shared/Navbar/Navbar";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import Footer from "../../Shared/Footer/Footer";
 
 function formatDate(date) {
     const options = { year: 'numeric', month: 'long', day: 'numeric' };
@@ -41,13 +42,13 @@ const AvailableFoods = () => {
                 </div>
             </div>
             <h2 className="my-10 text-center text-orange-500 font-bold border-2 border-orange-500 w-52 text-2xl flex mx-auto">Available Foods</h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 my-10">
                 {
                     foods?.filter(food => food.foodName.toLowerCase().includes(searchItem.toLowerCase())).map(food => <Food key={food._id} food={{ ...food, date: formatDate(food.date) }}></Food>)
 
-                    // 
                 }
             </div>
+            <Footer></Footer>
         </div>
     );
 };

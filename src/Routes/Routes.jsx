@@ -11,6 +11,7 @@ import FoodRequest from "../components/pages/FoodRequest/FoodRequest";
 import FoodTable from "../components/pages/FoodTable/FoodTable";
 import ErrorPage from "../components/Shared/ErrorPage/ErrorPage";
 import UpdateFood from "../components/UpdateFood/UpdateFood";
+import SingleReqFood from "../components/pages/SingleReqFood/SingleReqFood";
 
 const router = createBrowserRouter([
     {
@@ -46,6 +47,11 @@ const router = createBrowserRouter([
                 element: <UpdateFood></UpdateFood>,
                 loader: ({params})=> fetch(`http://localhost:5000/food/${params.id}`)
                 
+            },
+            {
+                path: '/singleFood/:id',
+                element: <PrivateRoutes><SingleReqFood></SingleReqFood></PrivateRoutes>,
+                loader: ()=> fetch('http://localhost:5000/food')
             },
             {
                 path: '/request',

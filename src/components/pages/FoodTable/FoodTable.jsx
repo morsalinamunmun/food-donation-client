@@ -1,37 +1,12 @@
-import { Card, Navbar, Typography } from "@material-tailwind/react";
+import { Card, Typography } from "@material-tailwind/react";
 import { useState } from "react";
 import { Link, useLoaderData } from "react-router-dom";
 import Swal from "sweetalert2";
+import Navbar from "../../Shared/Navbar/Navbar";
+import Footer from "../../Shared/Footer/Footer";
  
 const TABLE_HEAD = ["Food Name", "Date", "Status", ""];
  
-/* const TABLE_ROWS = [
-  {
-    name: "John Michael",
-    job: "Manager",
-    date: "23/04/18",
-  },
-  {
-    name: "Alexa Liras",
-    job: "Developer",
-    date: "23/04/18",
-  },
-  {
-    name: "Laurent Perrier",
-    job: "Executive",
-    date: "19/09/17",
-  },
-  {
-    name: "Michael Levi",
-    job: "Developer",
-    date: "24/12/08",
-  },
-  {
-    name: "Richard Gran",
-    job: "Manager",
-    date: "04/10/21",
-  },
-]; */
  
 const FoodTable =() => {
   const foods = useLoaderData();
@@ -68,9 +43,9 @@ const FoodTable =() => {
       })
 }
   return (
-    <div className="max-w-6xl mx-auto">
+    <div className="max-w-7xl mx-auto">
     <Navbar></Navbar>
-    <Card className="h-full w-full overflow-scroll">
+    <Card className="h-full w-full bg-orange-200 overflow-scroll my-10 max-w-6xl mx-auto">
       <table className="w-full min-w-max table-auto text-left">
         <thead>
           <tr>
@@ -154,7 +129,7 @@ const FoodTable =() => {
                     color="blue-gray"
                     className="font-medium"
                   >
-                    Manage
+                    <Link to={`/singleFood/${_id}`}>Manage</Link>
                   </Typography>
                 </td>
               </tr>
@@ -163,6 +138,7 @@ const FoodTable =() => {
         </tbody>
       </table>
     </Card>
+    <Footer></Footer>
     </div>
   );
 }

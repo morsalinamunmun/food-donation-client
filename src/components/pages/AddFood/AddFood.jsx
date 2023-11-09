@@ -19,7 +19,7 @@ const AddFood = () => {
         const foodInfo = { foodName, status, location, quantity, date, notes, image_url, name, D_email, DImage_url }
 
         //send form data to server
-        fetch('http://localhost:5000/food ', {
+        fetch('https://food-donation-server-five.vercel.app/food ', {
             method: 'POST',
             headers: {
                 "content-type": "application/json"

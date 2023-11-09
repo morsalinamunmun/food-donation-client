@@ -12,7 +12,7 @@ const SingleReqFood = () => {
 
     const handleStatusChange = () => {
         // Send a request to update the status to "Delivered"
-        fetch(`http://localhost:5000/updateRequestStatus/${food.id}`, {
+        fetch(`https://food-donation-server-five.vercel.app/updateRequestStatus/${food.id}`, {
             method: "PUT",
             headers: {
                 "Content-Type": "application/json",

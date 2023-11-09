@@ -30,36 +30,36 @@ const router = createBrowserRouter([
             {
                 path: '/available',
                 element: <AvailableFoods></AvailableFoods>,
-                //loader: ()=>fetch('http://localhost:5000/food')
+                //loader: ()=>fetch('https://food-donation-server-five.vercel.app/food')
             },
             {
                 path: '/details/:id',
                 element: <PrivateRoutes><ViewDetails></ViewDetails></PrivateRoutes>,
-                loader: ()=> fetch('http://localhost:5000/food')
+                loader: () => fetch('https://food-donation-server-five.vercel.app/food')
             },
             {
                 path: '/manage',
                 element: <PrivateRoutes><FoodTable></FoodTable></PrivateRoutes>,
-                loader: ()=>fetch('http://localhost:5000/food')
+                loader: () => fetch('https://food-donation-server-five.vercel.app/food')
             },
             {
                 path: '/updateFood/:id',
                 element: <UpdateFood></UpdateFood>,
-                loader: ({params})=> fetch(`http://localhost:5000/food/${params.id}`)
-                
+                loader: ({ params }) => fetch(`https://food-donation-server-five.vercel.app/food/${params.id}`)
+
             },
             {
                 path: '/singleFood/:id',
                 element: <PrivateRoutes><SingleReqFood></SingleReqFood></PrivateRoutes>,
-                loader: ()=> fetch('http://localhost:5000/food')
+                loader: () => fetch('https://food-donation-server-five.vercel.app/food')
             },
             {
                 path: '/request',
                 element: <PrivateRoutes><FoodRequest></FoodRequest></PrivateRoutes>,
-                //loader: ()=> fetch('http://localhost:5000/requestFood')
+                //loader: ()=> fetch('https://food-donation-server-five.vercel.app/requestFood')
             },
             {
-                path:'/login',
+                path: '/login',
                 element: <Login></Login>
             },
             {

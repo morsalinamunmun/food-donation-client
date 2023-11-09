@@ -23,7 +23,7 @@ const FoodTable =() => {
         confirmButtonText: 'Yes, cancel it!'
       }).then((result) => {
         if (result.isConfirmed) {
-          fetch(`http://localhost:5000/food/${_id}`, {
+          fetch(`https://food-donation-server-five.vercel.app/food/${_id}`, {
             method: "DELETE"
           })
           .then(res=> res.json())

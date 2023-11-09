@@ -15,7 +15,7 @@ const AvailableFoods = () => {
     console.log(foods)
     const [searchItem, setSearchItem] = useState('');
     useEffect(() => {
-        axios.get('http://localhost:5000/food')
+        axios.get('https://food-donation-server-five.vercel.app/food')
             .then(res => {
                 const sortedFoods = res.data
                     .map(food => ({

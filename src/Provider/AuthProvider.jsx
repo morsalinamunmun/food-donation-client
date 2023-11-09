@@ -50,12 +50,12 @@ const AuthProvider = ({children}) => {
             setLoading(false)
             //user token
             if(currentUser){
-                axios.post('http://localhost:5000/jwt', loginUser, {withCredentials: true})
+                axios.post('https://food-donation-server-five.vercel.app/jwt', loginUser, {withCredentials: true})
                 .then(res => {
                     console.log('token', res.data);
                 })
             }else{
-                axios.post('http://localhost:5000/logout', loginUser, {withCredentials: true})
+                axios.post('https://food-donation-server-five.vercel.app/logout', loginUser, {withCredentials: true})
                 .then(res=>{
                     console.log(res.data);
                 })

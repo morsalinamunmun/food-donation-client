@@ -11,7 +11,7 @@ const FoodRequest = () => {
     //const loadedFoodItems = useLoaderData();
     const [foodItems, setFoodItems] = useState([]);
     console.log(foodItems)
-    const url = `http://localhost:5000/requestFood?email=${user?.email}`;
+    const url = `https://food-donation-server-five.vercel.app/requestFood?email=${user?.email}`;
    useEffect(()=>{
     fetch(url, {credentials: 'include'})
     .then(res => res.json())

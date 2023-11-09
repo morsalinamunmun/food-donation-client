@@ -24,7 +24,7 @@ const ViewDetail = ({ viewDetail }) => {
         const requestInfo = { foodName, id, location, quantity, request_date, date, notes, image_url, name, money, D_email, email}
 
         //send form data to server
-        fetch('http://localhost:5000/requestFood', {
+        fetch('https://food-donation-server-five.vercel.app/requestFood', {
             method: 'POST',
             headers: {
                 "content-type": "application/json"

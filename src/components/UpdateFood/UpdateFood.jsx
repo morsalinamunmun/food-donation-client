@@ -23,7 +23,7 @@ const UpdateFood = () => {
 
         
         //send form data to server
-        fetch(`http://localhost:5000/food/${_id}`, {
+        fetch(`https://food-donation-server-five.vercel.app/food/${_id}`, {
             method: 'PUT',
             headers: {
                 "content-type": "application/json"

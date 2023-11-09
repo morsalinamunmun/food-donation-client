@@ -7,7 +7,7 @@ const Foods = () => {
     const [foods, setFoods] = useState([]);
     const [showAll, setShowAll] = useState(true);
     useEffect(()=>{
-        axios.get('http://localhost:5000/food')
+        axios.get('https://food-donation-server-five.vercel.app/food')
     .then(res=>{
         // setFoods(res.data)
         const sortedFoods = res.data.sort((a, b) => b.quantity - a.quantity);
